@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Wba.RateAMovie.Core.Entities;
+using Wba.RateAMovie.Web.Data.Seeding;
 
 namespace Wba.RateAMovie.Web.Data
 {
@@ -53,6 +54,8 @@ namespace Wba.RateAMovie.Web.Data
             //configure composite key for actorMovie
             modelBuilder.Entity<ActorMovie>()
                 .HasKey(am => new { am.MovieId, am.ActorId });
+            //call seeder
+            Seeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }
